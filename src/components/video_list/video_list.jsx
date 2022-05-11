@@ -5,7 +5,7 @@ import styles from './video_list.module.css'
 
 const VideoList = (props) => (
     <ul className={styles.videos}>
-      {props.videos.map(video =><VideoItem key={video.KINO_ID} video={video}/>)}
+      {props.videos.map( video =><VideoItem key={video.KinoId} video={video}/>)}
     </ul>
 )
 export default VideoList;
