@@ -1,27 +1,26 @@
 class Youtube {
-  constructor(key) {
-    this.key = key;
-    this.getRequestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-  }
-  async mostPopular() {
-    const response = await fetch("all", this.getRequestOptions).then(
-      (response) => response.json()
-    );
-    const result = await response.json();
-    return result.Data;
-    // .then((data) => console.log(data))
-  }
+    constructor(key){
+        this.key = key;
+        this.getRequestOptions={
+            method: 'GET',
+            redirect: 'follow'
+          };
+    }
+    mostPopular(){
+          return fetch("all", this.getRequestOptions)
+            .then(response => response.json())
+            .then(result => result.Data)
+            // .then((data) => console.log(data))
 
-  async search(query) {
-    const response = await fetch(
-      fetch(`/contents/title/${query}`, this.getRequestOptions)
-    );
-    const result = await response.json();
-    return result.Data;
-  }
+    }
+
+    search(query){
+        return fetch(
+          fetch(`/contents/title/${query}`, this.getRequestOptions)
+            .then(response => response.json())
+            .then(result => result.Data)
+        )
+}
 }
 
-export default Youtube;
+export default Youtube
